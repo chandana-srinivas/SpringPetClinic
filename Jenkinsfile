@@ -1,6 +1,5 @@
 pipeline{
-    agent{
-        label 'master'}
+    agent any
         tools{maven 'M3'}
         stages{
             stage('CHeckout'){
@@ -28,6 +27,5 @@ pipeline{
                 sh 'java -jar /home/coder/.jenkins/workspace/PetClinicDeclarativePipeline/target/*.jar'
             }
         }
-}
 
 }
