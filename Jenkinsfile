@@ -4,7 +4,7 @@ pipeline{
         stages{
             stage('CHeckout'){
                 steps{
-                    git branh: 'main', url:'https://github.com/chandana-srinivas/SpringPetClinic.git'
+                    git branch: 'main', url:'https://github.com/chandana-srinivas/SpringPetClinic.git'
                     
                 }
             }
@@ -19,13 +19,17 @@ pipeline{
                 }
             }
             stage('Package'){
-                sh 'mvn package'
+                steps{
+                    sh 'mvn package'
+                }
+                
             }
-        }
+        
         stage('Deploy'){
             steps{
                 sh 'java -jar /home/coder/.jenkins/workspace/PetClinicDeclarativePipeline/target/*.jar'
             }
         }
 
+        }
 }
